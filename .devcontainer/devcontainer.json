@@ -1,0 +1,27 @@
+{
+  "name": "MujocoLab ICRL Dev",
+  "dockerComposeFile": "docker-compose.yaml",
+  "service": "mjlab-dev",
+  "runServices": ["mjlab-dev"],
+  "workspaceFolder": "/workspace",
+  "initializeCommand": "docker compose -f .devcontainer/docker-compose.yaml build mjlab-dev",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": { "bash": { "path": "/usr/bin/bash" } },
+        "terminal.integrated.cwd": "/workspace",
+        "python.defaultInterpreterPath": "/usr/bin/python3"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "charliermarsh.ruff",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/docker/env_setup.sh",
+  "remoteUser": "ubuntu"
+}
