@@ -1,0 +1,24 @@
+<!-- src/mjlab/asset_zoo/robots/point_mass/xmls/point_mass.xml -->
+<mujoco model="point_mass">
+  <statistic center="0 0 0.5" extent="2.0"/>
+  
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+  </visual>
+
+  <worldbody>
+    <!-- Point mass body: free planar motion -->
+    <body name="point" pos="0 0 0.1">
+      <joint name="free_x" type="slide" axis="1 0 0" pos="0 0 0" limited="false"/>
+      <joint name="free_y" type="slide" axis="0 1 0" pos="0 0 0" limited="false"/>
+      <geom name="point_geom" type="sphere" size="0.05" rgba="0.9 0.4 0.4 1"/>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <!-- Force actuators for x/y control -->
+    <motor name="act_x" joint="free_x" gear="1.0"/>
+    <motor name="act_y" joint="free_y" gear="1.0"/>
+  </actuator>
+</mujoco>
